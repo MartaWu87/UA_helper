@@ -18,12 +18,13 @@
 </head>
 <body>
 
-<section style="background-color: #eee;">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-12"
+
             <form:form method="post"
                        modelAttribute="user">
+            <section style="background-color: #eee;">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-12"
                 <form:hidden path="id"/>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="form-outline mb-1">
@@ -57,22 +58,12 @@
                     <form:errors path="description"/>
                     <label class="form-label" for="form3Example411">Opis</label>
                 </div>
-                <%--                <div class="form-outline mb-1">--%>
-                <%--                    <input type="" id="form3Example4111" <form:input path="region"/>" items="${Region.voivodship}"--%>
-                <%--                           class="form-control"/>--%>
-                <%--                    <label class="form-label" for="form3Example4111">REgion</label>--%>
-                <%--                </div>--%>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Wybierz województwo</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected><form:select path="region"/><form:errors path="region"/></option>
-                    </select><br/>
-
-                </div>
-
-
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Wybierz województwo</label>
+                            </div>
+                            <form:select path="region" items="${regions}" itemLabel="voivodship"/>
+                        </div>
                 <!-- Password input -->
                 <div class="form-outline mb-1">
                     <input type="password" id="form3Example4" class="form-control" <form:input path="password"/>
@@ -80,11 +71,12 @@
                     <label class="form-label" for="form3Example4">Hasło</label>
                 </div>
                 <button type="submit" value="Zapisz zmiany" class="btn btn-primary btn-block mb-1">Zapisz zmiany</button>
+                    </div>
+                </div>
+                </div>
+            </section>
                 </form:form>
-        </div>
-    </div>
-    </div>
-</section>
+
 
 </body>
 <%@ include file="footer.jsp" %>

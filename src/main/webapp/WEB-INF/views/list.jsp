@@ -29,8 +29,8 @@
                 <tr role="row" class="odd">
                     <td class="sorting_1">${user.name}"</td>
                     <td>${user.description}</td>
-                    <td>${user.region}</td>
-                    <td>${user.category}</td>
+                    <td>${user.region.voivodship}</td>
+                    <td>${user.category.name}</td>
                     <td>${user.needs}</td>
                     </c:forEach>
                 </tr></tbody>

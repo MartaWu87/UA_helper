@@ -33,9 +33,10 @@ public class Needs {
     @ManyToMany
     private List<User> user;
 
-    public Needs(String name, Category category, List<User> user) {
+    public Needs(long id, LocalDateTime createDateTime, String name, Category category) {
+        this.id = id;
+        this.createDateTime = createDateTime;
         this.name = name;
         this.category = category;
-        this.user = user;
     }
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: marta
-  Date: 08/07/2022
-  Time: 11:17
+  Date: 10/07/2022
+  Time: 18:53
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -56,17 +56,17 @@
         <a href="#" class="btn btn-primary ua-btn">
                     <span class="icon text-white-50">
                     </span>
-            <span class="text">O nas</span>
+            <span class="text">O projekcie</span>
         </a>
-        <a href="/user/list" class="btn btn-primary ua-btn">
+        <a href="/user/show/${user.id} class="btn btn-primary ua-btn">
                     <span class="icon text-white-50">
                     </span>
-            <span class="text">Placówki</span>
+            <span class="text">Moje dane</span>
         </a>
-        <a href="/needs/all" class="btn btn-primary ua-btn">
+        <a href="/needs/show/${user.id}" class="btn btn-primary ua-btn">
                     <span class="icon text-white-50">
                     </span>
-            <span class="text">Potrzeby</span>
+            <span class="text">Moje potrzeby</span>
         </a>
 
 
@@ -74,7 +74,7 @@
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
 
-<%--            <button class="rounded-circle border-0" id="sidebarToggle"></button>--%>
+            <%--            <button class="rounded-circle border-0" id="sidebarToggle"></button>--%>
         </div>
 
     </ul>
@@ -85,9 +85,9 @@
 
         <!-- Main Content -->
         <div id="content">
-<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 
-</div>
+            </div>
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -96,18 +96,11 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <ul class="navbar-nav ml-auto">
-                <a href="#" class="btn btn-primary ua-btn-head">
+                    <a href="#" class="btn btn-primary ua-btn-head">
                     <span class="icon text-white-50">
                     </span>
-                    <span class="text">Zarejestruj</span>
-                </a>
-                <a href="#" class="btn btn-primary ua-btn-head">
-                    <span class="icon text-white-50">
-                    </span>
-                    <span class="text">Zaloguj</span>
-                </a>
+                        <span class="text">Witaj, ${user.name}</span>
+                    </a>
                 </ul>
 
             </nav>
-
-

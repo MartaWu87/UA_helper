@@ -24,4 +24,9 @@ public class Region {
     private String voivodship;
     @OneToMany
     private List<User> user = new ArrayList<User>();
+
+    public Region(long id, String voivodship) {
+        this.id = id;
+        this.voivodship = voivodship;
+    }
 }

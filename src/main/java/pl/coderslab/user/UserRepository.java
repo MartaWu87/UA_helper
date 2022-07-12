@@ -13,5 +13,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+//
+//    public List<User> findUsersWithRegion(List<Region> regions) {
+//        return entityManager
+//                .createQuery("SELECT u FROM User u WHERE u.region in : regions")
+//                .setParameter("regions", regions)
+//                .getResultList();
+    }
 
-}

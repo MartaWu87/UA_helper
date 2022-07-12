@@ -10,6 +10,7 @@
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
 <html>
+<%@ include file="headerLog.jsp" %>
 <head>
     <title>UAhelper</title>
 </head>
@@ -17,7 +18,7 @@
 
 <form:form method="post" modelAttribute="needs">
 
-    Wybierz kategorię  <form:select path="category" items="${category.category}"/><br/><br/>
+    Wybierz kategorię  <form:select path="category" items="${category}" itemLabel="category"/><br/><br/>
     opis potrzeby  <form:input path="name"/>
     <form:errors path="name"/><br/><br/>
 
@@ -25,4 +26,5 @@
 </form:form>
 
 </body>
+<%@ include file="footer.jsp" %>
 </html>
