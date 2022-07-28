@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.mapping.ToOne;
-import pl.coderslab.user.User;
+import pl.coderslab.security.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;

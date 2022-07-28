@@ -9,7 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<%@ include file="headerLog.jsp" %>
+<%@ include file="../extras/headerLog.jsp" %>
 <head>
     <title>UAhelper</title>
 </head>
@@ -20,5 +20,5 @@
     <td>${needs.name}</td>
     </c:forEach>
 </body>
-<%@ include file="footer.jsp" %>
+<%@ include file="../extras/footer.jsp" %>
 </html>

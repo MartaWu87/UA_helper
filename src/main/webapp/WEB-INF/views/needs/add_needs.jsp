@@ -9,16 +9,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
+<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <html>
-<%@ include file="headerLog.jsp" %>
+<%@ include file="../extras/headerLog.jsp" %>
 <head>
     <title>UAhelper</title>
 </head>
 <body>
-
+<sec:authorize access="isAuthenticated()">
 <form:form method="post" modelAttribute="needs">
 
-    Wybierz kategorię  <form:select path="category" items="${category}" itemLabel="category"/><br/><br/>
+    Wybierz kategorię  <form:select path="category" items="${category}" itemLabel="name"/><br/>
     opis potrzeby  <form:input path="name"/>
     <form:errors path="name"/><br/><br/>
 
@@ -26,5 +27,5 @@
 </form:form>
 
 </body>
-<%@ include file="footer.jsp" %>
+<%@ include file="../extras/footer.jsp" %>
 </html>

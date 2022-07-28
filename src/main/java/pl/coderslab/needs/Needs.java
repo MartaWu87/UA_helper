@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.mapping.ToOne;
 import pl.coderslab.category.Category;
-import pl.coderslab.user.User;
+import pl.coderslab.security.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

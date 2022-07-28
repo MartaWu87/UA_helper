@@ -10,7 +10,7 @@
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
 <html>
-<%@ include file="header.jsp" %>
+<%@ include file="../extras/header.jsp" %>
 <head>
     <title>UAhelper</title>
 </head>
@@ -61,10 +61,6 @@
                 <input type="password" id="form3Example4" class="form-control" <form:input path="password"/>
                 <label class="form-label" for="form3Example4">Hasło</label>
             </div>
-            <div class="form-outline mb-1">
-                <input type="password" id="form3Example42" class="form-control" <form:input path="password"/>
-                <label class="form-label" for="form3Example42">Powtórz hasło</label>
-            </div>
 
             <button type="submit" value="Zarejestruj" class="btn btn-primary btn-block mb-1">Zarejestruj</button>
 
@@ -75,5 +71,5 @@
 </form:form>
 
 </body>
-<%@ include file="footer.jsp" %>
+<%@ include file="../extras/footer.jsp" %>
 </html>

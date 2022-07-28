@@ -14,17 +14,17 @@
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
 <html>
-<%@ include file="header.jsp" %>
+<%@ include file="../extras/header.jsp" %>
 </head>
 <body>
 
 
-            <form:form method="post"
-                       modelAttribute="user">
-            <section style="background-color: #eee;">
-                <div class="container py-5">
-                    <div class="row">
-                        <div class="col-lg-12"
+<form:form method="post"
+           modelAttribute="user">
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12"
                 <form:hidden path="id"/>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="form-outline mb-1">
@@ -39,7 +39,7 @@
                 </div>
                 <!-- Email input -->
                 <div class="form-outline mb-1">
-                    <input type="tekst" id="form3Example3" class="form-control"  <form:input path="mail"/>
+                    <input type="tekst" id="form3Example3" class="form-control" <form:input path="mail"/>
                     <form:errors path="mail"/>
                     <label class="form-label" for="form3Example3">Adres e-mail</label>
                 </div>
@@ -58,41 +58,30 @@
                     <form:errors path="description"/>
                     <label class="form-label" for="form3Example411">Opis</label>
                 </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">Wybierz województwo</label>
-                            </div>
-                            <form:select path="region" items="${regions}" itemLabel="voivodship"/>
-                        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Wybierz województwo</label>
+                    </div>
+                    <form:select path="region" items="${regions}" itemLabel="voivodship"/>
+                </div>
                 <!-- Password input -->
                 <div class="form-outline mb-1">
                     <input type="password" id="form3Example4" class="form-control" <form:input path="password"/>
                     <form:errors path="password"/>
                     <label class="form-label" for="form3Example4">Hasło</label>
                 </div>
-                <button type="submit" value="Zapisz zmiany" class="btn btn-primary btn-block mb-1">Zapisz zmiany</button>
-                    </div>
-                </div>
-                </div>
-            </section>
-                </form:form>
+                <button type="submit" value="Zapisz zmiany" class="btn btn-primary btn-block mb-1">Zapisz zmiany
+                </button>
+            </div>
+        </div>
+        </div>
+    </section>
+</form:form>
 
 
 </body>
-<%@ include file="footer.jsp" %>
+<%@ include file="../extras/footer.jsp" %>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <%--<c:url var="edit_url" value="/user/edit"/>--%>

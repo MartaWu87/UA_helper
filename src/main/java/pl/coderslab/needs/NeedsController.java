@@ -5,12 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.category.CategoryRepository;
-import pl.coderslab.user.UserRepository;
+import pl.coderslab.security.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
-@RequestMapping(value = "/needs")
+@RequestMapping(value = "user/needs")
 @Controller
 public class NeedsController {
     private final NeedsRepository needsRepository;
@@ -22,34 +22,40 @@ public class NeedsController {
         this.userRepository = userRepository;
         this.categoryRepository = categoryRepository;
     }
-    @GetMapping("/all")
-    public String showNeeds(Model model) {
+//    @GetMapping("/all")
+//    public String showNeeds(Model model) {
+//        model.addAttribute("needs", needsRepository.findByUserId());
+//        model.addAttribute("category", categoryRepository.findAll());
+//        return "needs/needs";
+//    }
+    @GetMapping("/list")
+    public String showAllNeeds(Model model) {
         model.addAttribute("needs", needsRepository.findAll());
         model.addAttribute("category", categoryRepository.findAll());
-        return "/needs";
+        return "needs/needs";
     }
 
-    @RequestMapping(value = "user/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showAdddForm(Model model) {
         model.addAttribute("needs", new Needs());
         model.addAttribute("category", categoryRepository.findAll());
-        return "add_needs";
+        return "needs/add_needs";
     }
 
-    @RequestMapping(value = "user/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String saveNeeds(@Valid Needs needs, BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:add_needs";
+            return "needs/add_needs";
         }
         needsRepository.save(needs);
-        return "show_needs";
+        return "needs/show_needs";
     }
 
     @GetMapping("/show/{id}")
     public String showNeeds(Model model, @PathVariable long id) {
         model.addAttribute("needs", needsRepository.findById(id).orElseThrow(EntityNotFoundException::new));
         model.addAttribute("category", categoryRepository.findAll());
-        return "/show_needs";
+        return "needs/show_needs";
     }
 
     @GetMapping("/delete/{id}")

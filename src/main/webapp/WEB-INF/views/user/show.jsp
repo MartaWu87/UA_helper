@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<%@ include file="headerLog.jsp" %>
+<%@ include file="../extras/headerLog.jsp" %>
 </head>
 <body>
 
@@ -91,7 +91,7 @@
 
   <div class="container py-5 row">
   <div class="card col-lg-12">
-  <p class="mb-8"><span class="text-primary font-italic me-1">Moje aktualne potrzeby</span>
+  <p class="mb-8"><span class="text-primary font-italic me-1">Aktualne potrzeby placówki</span>
   </p>
   <p class="mb-8" style="font-size: .77rem;"> ${user.needs}</p>
   </div>
@@ -100,5 +100,5 @@
 </section>
 
 </body>
-<%@ include file="footer.jsp" %>
+<%@ include file="../extras/footer.jsp" %>
 </html>
