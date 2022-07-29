@@ -39,8 +39,8 @@ public class User {
     private String description;
     @ManyToOne
     private Region region;
-    @ManyToOne
-    private Category category;
+    @ManyToMany
+    private Set<Category> category;
     @ManyToMany
     private Set<Needs> needs;
 
@@ -50,7 +50,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User(Long id, String name, String adres, String mail, String password, String phone, String accountNumber, String description, Region region, Category category, Set<Needs> needs) {
+    public User(Long id, String name, String adres, String mail, String password, String phone, String accountNumber, String description, Region region, Set<Category> category, Set<Needs> needs) {
         this.id = id;
         this.name = name;
         this.adres = adres;

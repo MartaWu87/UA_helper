@@ -14,10 +14,10 @@
     <title>UAhelper</title>
 </head>
 <body>
-<c:forEach items="${needs}" var="needs">
-    <td>${needs.createDateTime}</td>
-    <td>${needs.category.category}</td>
-    <td>${needs.name}</td>
+<c:forEach items="${needs}" var="need">
+    <td>${need.createDateTime}</td>
+    <td>${need.category.category}</td>
+    <td>${need.name}</td>
     </c:forEach>
 </body>
 <%@ include file="../extras/footer.jsp" %>

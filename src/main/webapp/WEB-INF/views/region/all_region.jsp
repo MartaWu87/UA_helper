@@ -29,8 +29,12 @@
                     <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                         aria-sort="ascending" aria-label="Name: activate to sort column descending"
                         style="width: 57px;">Województwo
-                    <td><a href="<c:url value="/admin/region/add"/>" class="btn btn-info">
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending" style="width: 62px;"><a
+                            href="<c:url value="/admin/region/add"/>" class="btn btn-info">
                         <span class="icon text-white-100"><b>Dodaj</b></a>
+
                     </th>
                 </tr>
                 </thead>

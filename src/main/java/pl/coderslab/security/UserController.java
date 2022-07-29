@@ -50,8 +50,8 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/add";
         }
-        userRepository.save(user);
-        return "redirect:/user/show/{id}";
+        User save = userRepository.save(user);
+        return "redirect:/user/show/"+ save.getId();
     }
 
     @GetMapping("show/{id}")

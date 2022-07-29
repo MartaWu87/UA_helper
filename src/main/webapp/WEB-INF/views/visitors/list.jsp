@@ -30,7 +30,7 @@
                     <td class="sorting_1"><a href="/show/${user.id}" target="_self">${user.name}</td>
                     <td>${user.description}</td>
                     <td>${user.region.voivodship}</td>
-                    <td>${user.category.name}</td>
+                    <td>${user.category}</td>
                     <td>${user.needs}</td>
                     </c:forEach>
                 </tr></tbody>

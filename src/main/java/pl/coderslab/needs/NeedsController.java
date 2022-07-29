@@ -24,7 +24,7 @@ public class NeedsController {
     }
 //    @GetMapping("/all")
 //    public String showNeeds(Model model) {
-//        model.addAttribute("needs", needsRepository.findByUserId());
+//        model.addAttribute("needs", needsRepository.findByUserId(user.getId())); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Po security
 //        model.addAttribute("category", categoryRepository.findAll());
 //        return "needs/needs";
 //    }
@@ -61,7 +61,7 @@ public class NeedsController {
     @GetMapping("/delete/{id}")
     public String deleteNeeds(@PathVariable long id) {
         needsRepository.deleteById(id);
-        return "redirect:/needs/all";
+        return "redirect:/user/needs/list";
     }
 }
 
