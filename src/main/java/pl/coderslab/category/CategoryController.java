@@ -1,6 +1,7 @@
 package pl.coderslab.category;
 
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-//@Secured("ROLE_ADMIN")
 @RequestMapping("admin/category")
 public class CategoryController {
     private final CategoryRepository categoryRepository;
