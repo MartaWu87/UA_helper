@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.coderslab.Role;
 import pl.coderslab.category.Category;
 import pl.coderslab.needs.Needs;
 import pl.coderslab.region.Region;
-import pl.coderslab.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

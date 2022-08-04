@@ -1,16 +1,21 @@
 package pl.coderslab.visitors;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.UserService;
 import pl.coderslab.category.CategoryRepository;
 import pl.coderslab.needs.NeedsRepository;
 import pl.coderslab.region.RegionRepository;
+import pl.coderslab.security.User;
 import pl.coderslab.security.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.ServletException;
+import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping(value = " ")
@@ -20,12 +25,17 @@ public class VisitorsController {
     private final CategoryRepository categoryRepository;
     private final NeedsRepository needsRepository;
     private final RegionRepository regionRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
 
-    public VisitorsController(UserRepository userRepository, CategoryRepository categoryRepository, NeedsRepository needsRepository, RegionRepository regionRepository) {
+
+    public VisitorsController(UserRepository userRepository, CategoryRepository categoryRepository, NeedsRepository needsRepository, RegionRepository regionRepository, BCryptPasswordEncoder passwordEncoder, UserService userService) {
         this.userRepository = userRepository;
         this.categoryRepository = categoryRepository;
         this.needsRepository = needsRepository;
         this.regionRepository = regionRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
     }
 
     @GetMapping("/list")
@@ -35,11 +45,42 @@ public class VisitorsController {
         model.addAttribute("needs", needsRepository.findAll());
         return "visitors/list";
     }
-    @GetMapping("/show/{id}")
+    @GetMapping("show/{id}")
     public String showUser(Model model, @PathVariable long id) {
         model.addAttribute("user", userRepository.findById(id).orElseThrow(EntityNotFoundException::new));
         model.addAttribute("regions", regionRepository.findById(id));
         return "visitors/show";
+    }
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String showAddForm(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("regions", regionRepository.findAll());
+        return "visitors/add";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(@Valid User user, BindingResult bindingResult) throws ServletException, IOException {
+        User userExist = userService.findByName(user.getName());
+        if (userExist != null) {
+            bindingResult.rejectValue("name", "error.user", "Istnieje już taki użytkownik");
+            return "/add";
+        }
+        if (bindingResult.hasErrors()) {
+            return "/add";
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User save = userRepository.save(user);
+        return "redirect:/user/show/" + save.getId();
+    }
+
+    @GetMapping("/create-user")
+    @ResponseBody
+    public String createUser() {
+        User user = new User();
+        user.setName("MartaUser");
+        user.setPassword("MartaUser123");
+        userService.saveUser(user);
+        return "user";
     }
     @GetMapping("/index")
     public String home(){

@@ -69,7 +69,7 @@
                                 <p class="mb-0">Województwo</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">${user.region}</p>
+                                <p class="text-muted mb-0">${user.region.voivodship}</p>
                             </div>
                         </div>
                         <div class="row">

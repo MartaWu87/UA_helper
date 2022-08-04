@@ -1,4 +1,5 @@
 package pl.coderslab;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,11 +23,13 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String name) {
         User user = userService.findByName(name);
-        if (user == null) {throw new UsernameNotFoundException(name); }
+        if (user == null) {
+            throw new UsernameNotFoundException(name);
+        }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         user.getRoles().forEach(r ->
                 grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
-        return new org.springframework.security.core.userdetails.User(
-                user.getName(), user.getPassword(), grantedAuthorities);
+        return new CurrentUser(user.getId(), user.getName(), user.getPassword(),
+                grantedAuthorities, user);
     }
 }
