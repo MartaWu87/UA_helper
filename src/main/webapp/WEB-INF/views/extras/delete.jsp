@@ -11,12 +11,12 @@
 <html>
 <%@ include file="header.jsp" %>
 <head>
-  <title>UAhelper</title>
+    <title>UAhelper</title>
 </head>
 <body>
-<form action="<c:url value="/logout"/>" method="post">
-  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Wyloguj">
-  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<form action="<c:url value="/user/delete"/>" method="post">
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Usuń">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 </body>
 <%@ include file="footer.jsp" %>

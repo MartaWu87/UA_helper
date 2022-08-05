@@ -29,8 +29,8 @@ public class Needs {
     private String name;
     @OneToOne
     private Category category;
-    @ManyToMany
-    private List<User> user;
+    @ManyToOne
+    private User user;
 
     public Needs(long id, LocalDateTime createDateTime, String name, Category category) {
         this.id = id;

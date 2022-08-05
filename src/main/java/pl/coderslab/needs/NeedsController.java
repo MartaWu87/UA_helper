@@ -1,14 +1,18 @@
 package pl.coderslab.needs;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.CurrentUser;
 import pl.coderslab.category.CategoryRepository;
+import pl.coderslab.security.User;
 import pl.coderslab.security.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping(value = "user/needs")
 @Controller
@@ -28,40 +32,41 @@ public class NeedsController {
 //        model.addAttribute("category", categoryRepository.findAll());
 //        return "needs/needs";
 //    }
-    @GetMapping("/list")
-    public String showAllNeeds(Model model) {
-        model.addAttribute("needs", needsRepository.findAll());
-        model.addAttribute("category", categoryRepository.findAll());
-        return "needs/needs";
-    }
+//    @GetMapping("/list")
+//    public String showAllNeeds(Model model) {
+//        model.addAttribute("needs", needsRepository.findAll());
+//        model.addAttribute("category", categoryRepository.findAll());
+//        return "needs/needs";
+//    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showAdddForm(Model model) {
+    public String showAdddForm(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         model.addAttribute("needs", new Needs());
         model.addAttribute("category", categoryRepository.findAll());
         return "needs/add_needs";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveNeeds(@Valid Needs needs, BindingResult result) {
+    public String saveNeeds(@Valid Needs needs, @AuthenticationPrincipal CurrentUser currentUser, BindingResult result) {
         if (result.hasErrors()) {
             return "needs/add_needs";
         }
+        needs.setUser(currentUser.getUser());
         needsRepository.save(needs);
-        return "needs/show_needs";
+        return "redirect:/user/show";
     }
 
-    @GetMapping("/show/{id}")
-    public String showNeeds(Model model, @PathVariable long id) {
-        model.addAttribute("needs", needsRepository.findById(id).orElseThrow(EntityNotFoundException::new));
-        model.addAttribute("category", categoryRepository.findAll());
+    @GetMapping("/show")
+    public String showNeeds(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        model.addAttribute("needs", needsRepository.findAll());
+        model.addAttribute("category", categoryRepository.findById(currentUser.getUser().getId()));
         return "needs/show_needs";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteNeeds(@PathVariable long id) {
+    public String deleteNeeds(@PathVariable long id, @AuthenticationPrincipal CurrentUser currentUser) {
         needsRepository.deleteById(id);
-        return "redirect:/user/needs/list";
+        return "redirect:/user/needs/show";
     }
 }
 

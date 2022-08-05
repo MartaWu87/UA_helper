@@ -66,7 +66,7 @@
                             <tbody>
                             <c:forEach items="${user}" var="user">
                             <tr role="row" class="odd">
-                                <td class="sorting_1"><a href="show/${user.id}" target="_self">${user.name}</td>
+                                <td class="sorting_1"><a href="/show/${user.id}" target="_self">${user.name}</td>
                                 <td>${user.description}</td>
                                 <td>${user.region.voivodship}</td>
                                 <td>${user.category}</td>

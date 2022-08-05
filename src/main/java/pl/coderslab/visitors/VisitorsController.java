@@ -1,10 +1,12 @@
 package pl.coderslab.visitors;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.CurrentUser;
 import pl.coderslab.UserService;
 import pl.coderslab.category.CategoryRepository;
 import pl.coderslab.needs.NeedsRepository;
@@ -59,7 +61,7 @@ public class VisitorsController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@Valid User user, BindingResult bindingResult) throws ServletException, IOException {
+    public String add(@Valid User user, @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult) throws ServletException, IOException {
         User userExist = userService.findByName(user.getName());
         if (userExist != null) {
             bindingResult.rejectValue("name", "error.user", "Istnieje już taki użytkownik");
@@ -70,7 +72,7 @@ public class VisitorsController {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User save = userRepository.save(user);
-        return "redirect:/user/show/" + save.getId();
+        return "redirect:/user/show/";
     }
 
     @GetMapping("/create-user")

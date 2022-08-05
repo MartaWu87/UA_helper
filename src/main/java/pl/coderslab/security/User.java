@@ -41,7 +41,7 @@ public class User {
     private Region region;
     @ManyToMany
     private Set<Category> category;
-    @ManyToMany
+    @OneToMany
     private Set<Needs> needs;
 
     private int enabled;

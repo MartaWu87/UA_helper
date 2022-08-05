@@ -40,42 +40,40 @@ public class UserController {
 //        this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/list")
-    public String showPosts(Model model) {
-        model.addAttribute("user", userRepository.findAll());
-        model.addAttribute("category", categoryRepository.findAll());
-        model.addAttribute("needs", needsRepository.findAll());
-        return "user/list";
-    }
+//    @GetMapping("/list")
+//    public String showPosts(Model model) {
+//        model.addAttribute("user", userRepository.findAll());
+//        model.addAttribute("category", categoryRepository.findAll());
+//        model.addAttribute("needs", needsRepository.findAll());
+//        return "user/list";
+//    }
 
-
-
-    @GetMapping("show/{id}")//id usera!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public String showUser(Model model, @PathVariable long id, @AuthenticationPrincipal CurrentUser currentUser) {
+    @GetMapping("/show")
+    public String showUser(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         model.addAttribute("user", userRepository.findById(currentUser.getUser().getId()).orElseThrow(EntityNotFoundException::new));
-        model.addAttribute("regions", regionRepository.findById(id));
+        model.addAttribute("regions", regionRepository.findById(1));
         return "user/show";
     }
 
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)//id usera!!!!!!!!!!!!!!!!!!!!!
+    @GetMapping(value = "/edit")
     public String showEditForm(@PathVariable long id, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         model.addAttribute("user", userRepository.findById(currentUser.getUser().getId()));
         model.addAttribute("regions", regionRepository.findAll());
         return "user/edit";
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editUser(@Valid User user, BindingResult result, @AuthenticationPrincipal CurrentUser currentUser) {
         if (result.hasErrors()) {
             return "user/edit";
         }
         userRepository.save(user);
-        return "user/list";
+        return "user/show";
     }
 
     @GetMapping("/delete")
-    public String deleteUser(@PathVariable long id, @AuthenticationPrincipal CurrentUser currentUser) {
+    public String deleteUser(@AuthenticationPrincipal CurrentUser currentUser) {
         userRepository.deleteById(currentUser.getUser().getId());
         return "user/list";
     }

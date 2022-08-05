@@ -64,10 +64,16 @@
                     </span>
         <span class="text">Moje dane</span>
         </a>
-        <a href="needs/${user.id}/all" class="btn btn-primary ua-btn">
+        <a href="/user/needs/show" class="btn btn-primary ua-btn">
                     <span class="icon text-white-50">
                     </span>
-            <span class="text">Moje potrzeby</span>
+            <span class="text">Zarządzanie potrzebami</span>
+        </a>
+        </a>
+        <a href="/user/delete" class="btn btn-primary ua-btn">
+                    <span class="icon text-white-50">
+                    </span>
+            <span class="text">Usuń konto</span>
         </a>
 
 
@@ -96,7 +102,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <ul class="navbar-nav ml-auto">
-                    <a href="#" class="btn btn-primary ua-btn-head">
+                    <a href="/user/show" class="btn btn-primary ua-btn-head">
                     <span class="icon text-white-50">
                     </span>
                         <span class="text">Witaj, ${user.name}</span>

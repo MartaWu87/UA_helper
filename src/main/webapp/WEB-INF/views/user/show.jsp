@@ -90,9 +90,7 @@
             <p class="mb-8"><span class="text-primary font-italic me-1">Aktualne potrzeby placówki</span>
             </p>
             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                aria-label="Position: activate to sort column ascending" style="width: 62px;"><a
-                    href="<c:url value="/user/needs/add"/>" class="btn btn-info">
-                <span class="icon text-white-100"><b>Dodaj</b></a>
+                aria-label="Position: activate to sort column ascending" style="width: 62px;">
             </th>
             <p class="mb-8" style="font-size: .77rem;"> ${user.needs}</p>
         </div>
