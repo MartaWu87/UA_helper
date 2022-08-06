@@ -6,13 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.CurrentUser;
+import pl.coderslab.category.Category;
 import pl.coderslab.category.CategoryRepository;
-import pl.coderslab.security.User;
 import pl.coderslab.security.UserRepository;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-import java.util.List;
 
 @RequestMapping(value = "user/needs")
 @Controller
@@ -58,7 +56,7 @@ public class NeedsController {
 
     @GetMapping("/show")
     public String showNeeds(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
-        model.addAttribute("needs", needsRepository.findAll());
+        model.addAttribute("needs", needsRepository.findAllByUserId(currentUser.getUser().getId()));
         model.addAttribute("category", categoryRepository.findById(currentUser.getUser().getId()));
         return "needs/show_needs";
     }

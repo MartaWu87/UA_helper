@@ -7,7 +7,9 @@ import lombok.Setter;
 import pl.coderslab.security.User;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,6 +22,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @ManyToMany
-    private List<User> user;
+    @ManyToMany(mappedBy = "categories")
+    private Set<User> users = new HashSet<>();
+
 }

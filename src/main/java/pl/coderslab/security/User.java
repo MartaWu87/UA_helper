@@ -11,6 +11,8 @@ import pl.coderslab.region.Region;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +25,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column (nullable = false, unique = true, length = 60)
+    @Column(nullable = false, unique = true, length = 60)
     private String name;
     @Column(nullable = false)
     private String adres;
@@ -39,9 +41,10 @@ public class User {
     private String description;
     @ManyToOne
     private Region region;
-    @ManyToMany
-    private Set<Category> category;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "users_categories", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<Category>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Needs> needs;
 
     private int enabled;
@@ -50,7 +53,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User(Long id, String name, String adres, String mail, String password, String phone, String accountNumber, String description, Region region, Set<Category> category, Set<Needs> needs) {
+    public User(Long id, String name, String adres, String mail, String password, String phone, String accountNumber, String description, Region region, Set<Category> categories, Set<Needs> needs, int enabled) {
         this.id = id;
         this.name = name;
         this.adres = adres;
@@ -60,8 +63,17 @@ public class User {
         this.accountNumber = accountNumber;
         this.description = description;
         this.region = region;
-        this.category = category;
+        this.categories = categories;
         this.needs = needs;
+        this.enabled = enabled;
     }
+public void addCategory(Category category) {
+        this.categories.add(category);
+        category.getUsers().add(this);
+}
+public void removeCategory(Category category) {
+        this.categories.remove(category);
+        category.getUsers().remove(this);
+}
 }
 

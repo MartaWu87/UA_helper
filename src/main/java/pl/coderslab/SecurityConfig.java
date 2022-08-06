@@ -1,7 +1,9 @@
 package pl.coderslab;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,9 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Autowired
 //    public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
-//                .withUser("MartaUser").password(passwordEncoder.encode("MartaUser123")).roles("USER")
+//                .withUser("User").password(passwordEncoder.encode("User123")).roles("USER")
 //                .and()
-//                .withUser("MartaAdmin").password("MartaAdmin123").roles("ADMIN");
+//                .withUser("Admin").password(passwordEncoder.encode("Admin123")).roles("ADMIN");
 //    }
 
     @Override
