@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    @Query(value = "select * from category where user_id =?", nativeQuery=true)
+    @Query(value = "select * from category where user_id =?", nativeQuery = true)
     List<Needs> findAllByUserId(Long id);
 }

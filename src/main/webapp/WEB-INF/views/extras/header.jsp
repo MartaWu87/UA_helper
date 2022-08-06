@@ -20,8 +20,6 @@
     <meta name="author" content="">
 
     <title>UAhelper</title>
-
-    <!-- Custom fonts for this template-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Oswald:wght@700" rel="stylesheet">
@@ -32,7 +30,6 @@
     <link href="<c:url value="/theme/vendor/jquery/jquery.min.js"/>">
     <link href="<c:url value="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"/>">
     <link href="<c:url value="/theme/vendor/jquery-easing/jquery.easing.min.js"/>">
-    <!-- Custom styles for this template-->
     <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
 </head>
 

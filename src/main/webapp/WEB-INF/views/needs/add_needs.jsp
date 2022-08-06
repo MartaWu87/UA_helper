@@ -19,8 +19,8 @@
 <%--<sec:authorize access="isAuthenticated()">--%>
 <form:form method="post" modelAttribute="needs">
 
-    Wybierz kategorię  <form:select path="category" items="${category}" itemLabel="name"/><br/>
-    opis potrzeby  <form:input path="name"/>
+    Wybierz kategorię <form:select path="category" items="${category}" itemLabel="name"/><br/>
+    opis potrzeby <form:input path="name"/>
     <form:errors path="name"/><br/><br/>
 
     <input type="submit" value="Dodaj">

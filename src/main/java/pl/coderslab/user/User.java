@@ -1,10 +1,10 @@
-package pl.coderslab.security;
+package pl.coderslab.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.coderslab.Role;
+import pl.coderslab.security.Role;
 import pl.coderslab.category.Category;
 import pl.coderslab.needs.Needs;
 import pl.coderslab.region.Region;
@@ -12,7 +12,6 @@ import pl.coderslab.region.Region;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -67,13 +66,15 @@ public class User {
         this.needs = needs;
         this.enabled = enabled;
     }
-public void addCategory(Category category) {
+
+    public void addCategory(Category category) {
         this.categories.add(category);
         category.getUsers().add(this);
-}
-public void removeCategory(Category category) {
+    }
+
+    public void removeCategory(Category category) {
         this.categories.remove(category);
         category.getUsers().remove(this);
-}
+    }
 }
 

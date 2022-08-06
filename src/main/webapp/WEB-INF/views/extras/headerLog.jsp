@@ -18,10 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>UAhelper</title>
-
-    <!-- Custom fonts for this template-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Oswald:wght@700" rel="stylesheet">
@@ -32,28 +29,16 @@
     <link href="<c:url value="/theme/vendor/jquery/jquery.min.js"/>">
     <link href="<c:url value="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"/>">
     <link href="<c:url value="/theme/vendor/jquery-easing/jquery.easing.min.js"/>">
-    <!-- Custom styles for this template-->
     <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
 </head>
-
-
-<!-- Page Wrapper -->
 <div id="wrapper">
-
-    <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
             <div class="sidebar-brand-text">
                 <p class="h-font">UA<span class="r-font">helper</span></p>
             </div>
         </a>
-
-        <!-- Divider -->
         <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
         <a href="/index/" class="btn btn-primary ua-btn">
                     <span class="icon text-white-50">
                     </span>
@@ -75,29 +60,14 @@
                     </span>
             <span class="text">Usuń konto</span>
         </a>
-
-
-        <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
-
-            <%--            <button class="rounded-circle border-0" id="sidebarToggle"></button>--%>
         </div>
-
     </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
         <div id="content">
             <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-
             </div>
-            <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>

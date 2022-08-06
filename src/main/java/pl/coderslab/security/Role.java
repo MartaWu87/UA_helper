@@ -1,4 +1,4 @@
-package pl.coderslab;
+package pl.coderslab.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -6,11 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import pl.coderslab.category.Category;
-import pl.coderslab.security.User;
+import pl.coderslab.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Entity
@@ -23,7 +22,6 @@ public class Needs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @CreationTimestamp
     private LocalDateTime createDateTime;
     private String name;
@@ -37,5 +35,10 @@ public class Needs {
         this.createDateTime = createDateTime;
         this.name = name;
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return name + "; ";
     }
 }

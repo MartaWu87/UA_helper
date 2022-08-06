@@ -18,12 +18,13 @@
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Podaj dane do logowania</h2>
         <p>
-        <label> Nazwa : <input type="text" id="username" name="username" class="form-control" required="" autofocus="">
+            <label> Nazwa : <input type="text" id="username" name="username" class="form-control" required=""
+                                   autofocus="">
         </p>
         <p>
-        <label> Hasło: <input type="password" id="password" name="password" class="form-control" required="">
+            <label> Hasło: <input type="password" id="password" name="password" class="form-control" required="">
         </p>
-           <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </div>

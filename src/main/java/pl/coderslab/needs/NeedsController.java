@@ -5,10 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.CurrentUser;
-import pl.coderslab.category.Category;
+import pl.coderslab.security.CurrentUser;
 import pl.coderslab.category.CategoryRepository;
-import pl.coderslab.security.UserRepository;
+import pl.coderslab.user.UserRepository;
 
 import javax.validation.Valid;
 
@@ -24,27 +23,15 @@ public class NeedsController {
         this.userRepository = userRepository;
         this.categoryRepository = categoryRepository;
     }
-//    @GetMapping("/all")
-//    public String showNeeds(Model model) {
-//        model.addAttribute("needs", needsRepository.findByUserId(user.getId())); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Po security
-//        model.addAttribute("category", categoryRepository.findAll());
-//        return "needs/needs";
-//    }
-//    @GetMapping("/list")
-//    public String showAllNeeds(Model model) {
-//        model.addAttribute("needs", needsRepository.findAll());
-//        model.addAttribute("category", categoryRepository.findAll());
-//        return "needs/needs";
-//    }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @GetMapping(value = "/add")
     public String showAdddForm(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         model.addAttribute("needs", new Needs());
         model.addAttribute("category", categoryRepository.findAll());
         return "needs/add_needs";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     public String saveNeeds(@Valid Needs needs, @AuthenticationPrincipal CurrentUser currentUser, BindingResult result) {
         if (result.hasErrors()) {
             return "needs/add_needs";

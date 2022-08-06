@@ -1,16 +1,16 @@
-package pl.coderslab;
+package pl.coderslab.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.coderslab.security.User;
-import pl.coderslab.security.UserRepository;
+import pl.coderslab.user.User;
+import pl.coderslab.user.UserRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService {
-   private final BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
 
@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
     }
+
     @Override
     public User findByName(String name) {
         return userRepository.findByName(name);

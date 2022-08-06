@@ -23,7 +23,6 @@
             <div class="row">
                 <div class="col-lg-12"
                 <form:hidden path="id"/>
-                <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="form-outline mb-1">
                     <input type="text" id="form3Example1" class="form-control" <form:input path="name"/>
                     <label class="form-label" for="form3Example1">Nazwa placówki</label>
@@ -55,24 +54,16 @@
                     </div>
                     <form:select path="region" items="${regions}" itemLabel="voivodship"/>
                 </div>
-
-
-                <!-- Password input -->
                 <div class="form-outline mb-1">
                     <input type="password" id="form3Example4" class="form-control" <form:input path="password"/>
                     <label class="form-label" for="form3Example4">Hasło</label>
                 </div>
-
-
                 <button type="submit" value="Zarejestruj" class="btn btn-primary btn-block mb-1">Zarejestruj</button>
-
             </div>
         </div>
         </div>
     </section>
-    s
 </form:form>
-
 </body>
 <%@ include file="../extras/footer.jsp" %>
 </html>

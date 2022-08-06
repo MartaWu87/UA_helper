@@ -1,4 +1,4 @@
-package pl.coderslab;
+package pl.coderslab.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

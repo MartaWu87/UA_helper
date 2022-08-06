@@ -25,12 +25,13 @@ public class RegionController {
         return "region/all_region";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @GetMapping(value = "/add")
     public String AddRegion(Model model) {
         model.addAttribute("region", new Region());
         return "region/add_region";
     }
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+
+    @PostMapping(value = "/add")
     public String saveRegion(@Valid Region region, BindingResult result) {
         if (result.hasErrors()) {
             return "region/add_region";
@@ -38,6 +39,7 @@ public class RegionController {
         regionRepository.save(region);
         return "redirect:/admin/region/list";
     }
+
     @GetMapping("/delete/{id}")
     public String deleteRegion(@PathVariable long id) {
         regionRepository.deleteById(id);

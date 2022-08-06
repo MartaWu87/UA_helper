@@ -33,7 +33,8 @@
                                     style="width: 57px;">Data dodania
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                                    aria-label="Position: activate to sort column ascending" style="width: 62px;">Kategoria
+                                    aria-label="Position: activate to sort column ascending" style="width: 62px;">
+                                    Kategoria
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                                     aria-label="Position: activate to sort column ascending" style="width: 62px;">
@@ -45,23 +46,23 @@
                                     <span class="icon text-white-100"><b>Dodaj</b></a>
 
                                 </th>
-                                                           </tr>
+                            </tr>
                             </thead>
                             <tbody>
-<c:forEach items="${needs}" var="need">
-<tr role="row" class="odd">
-<%--    <input type="hidden" name="id" value="${needs.id}"/>--%>
-    <td>${need.createDateTime}</td>
-    <td>${need.category.name}</td>
-    <td>${need.name}</td>
-    <td><a href="<c:url value="/user/needs/delete/${need.id}"/>"
-           class="btn btn-info btn-circle btn-sm">
-        <i class="fas fa-trash"></i>
-</c:forEach>
-</tr>
+                            <c:forEach items="${needs}" var="need">
+                            <tr role="row" class="odd">
+                                    <%--    <input type="hidden" name="id" value="${needs.id}"/>--%>
+                                <td>${need.createDateTime}</td>
+                                <td>${need.category.name}</td>
+                                <td>${need.name}</td>
+                                <td><a href="<c:url value="/user/needs/delete/${need.id}"/>"
+                                       class="btn btn-info btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                    </c:forEach>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-<%@ include file="../extras/footer.jsp" %>
+                <%@ include file="../extras/footer.jsp" %>
 </html>

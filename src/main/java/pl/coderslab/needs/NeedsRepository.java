@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface NeedsRepository extends JpaRepository<Needs, Long> {
 
-    @Query(value = "select * from needs where user_id =?", nativeQuery=true)
-            List<Needs>findAllByUserId(Long id);
+    @Query(value = "select * from needs where user_id =?", nativeQuery = true)
+    List<Needs> findAllByUserId(Long id);
 }

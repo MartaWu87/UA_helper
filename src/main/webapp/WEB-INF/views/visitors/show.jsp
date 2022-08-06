@@ -12,12 +12,9 @@
 <%@ include file="../extras/header.jsp" %>
 </head>
 <body>
-
 <section style="background-color: #eee;">
     <div class="container py-5">
         <div class="row">
-
-
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
@@ -99,10 +96,7 @@
             <p class="mb-8" style="font-size: .77rem;"> ${user.description}</p>
         </div>
     </div>
-
-
 </section>
-
 </body>
 <%@ include file="../extras/footer.jsp" %>
 </html>

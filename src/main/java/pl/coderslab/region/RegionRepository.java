@@ -6,6 +6,5 @@ import java.util.Collection;
 
 public interface RegionRepository extends JpaRepository<Region, Long> {
 
-
     Region findById(long id);
 }

@@ -6,13 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.CurrentUser;
-import pl.coderslab.UserService;
+import pl.coderslab.security.CurrentUser;
+import pl.coderslab.security.UserService;
 import pl.coderslab.category.CategoryRepository;
 import pl.coderslab.needs.NeedsRepository;
 import pl.coderslab.region.RegionRepository;
-import pl.coderslab.security.User;
-import pl.coderslab.security.UserRepository;
+import pl.coderslab.user.User;
+import pl.coderslab.user.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.ServletException;
@@ -47,20 +47,22 @@ public class VisitorsController {
         model.addAttribute("needs", needsRepository.findAll());
         return "visitors/list";
     }
+
     @GetMapping("show/{id}")
     public String showUser(Model model, @PathVariable long id) {
         model.addAttribute("user", userRepository.findById(id).orElseThrow(EntityNotFoundException::new));
         model.addAttribute("regions", regionRepository.findById(id));
         return "visitors/show";
     }
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+
+    @GetMapping(value = "/add")
     public String showAddForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("regions", regionRepository.findAll());
         return "visitors/add";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     public String add(@Valid User user, @AuthenticationPrincipal CurrentUser currentUser, BindingResult bindingResult) throws ServletException, IOException {
         User userExist = userService.findByName(user.getName());
         if (userExist != null) {
@@ -84,8 +86,9 @@ public class VisitorsController {
         userService.saveUser(user);
         return "user";
     }
+
     @GetMapping("/index")
-    public String home(){
+    public String home() {
         return "extras/index";
     }
 }

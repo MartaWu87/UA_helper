@@ -14,18 +14,18 @@
     <title>UAhelper</title>
 </head>
 <body>
-    <c:forEach items="${user}" var="user">
+<c:forEach items="${user}" var="user">
 
-            <td>${user.name}</td>
-            <td>${user.adres}</td>
-            <td>${user.mail}</td>
-            <td>${user.phone}</td>
-            <td>${user.accountNumber}</td>
-            <td>${user.description}</td>
-            <td>${user.needs}</td>
-            </td>
+    <td>${user.name}</td>
+    <td>${user.adres}</td>
+    <td>${user.mail}</td>
+    <td>${user.phone}</td>
+    <td>${user.accountNumber}</td>
+    <td>${user.description}</td>
+    <td>${user.needs}</td>
+    </td>
 
-    </c:forEach>
+</c:forEach>
 </table>
 </body>
 </html>
