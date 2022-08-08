@@ -84,19 +84,53 @@
     </div>
     <div class="container py-5 row">
         <div class="card col-lg-12">
-            <p class="mb-8"><span class="text-primary font-italic me-1">Aktualne potrzeby placówki</span>
-            </p>
-            <p class="mb-8" style="font-size: .77rem;"> ${user.needs}</p>
-        </div>
-    </div>
-    <div class="container py-5 row">
-        <div class="card col-lg-12">
             <p class="mb-8"><span class="text-primary font-italic me-1">O nas...</span>
             </p>
             <p class="mb-8" style="font-size: .77rem;"> ${user.description}</p>
         </div>
     </div>
+    <div class="container py-5 row">
+        <div class="card col-lg-12">
+            <p class="mb-8"><span class="text-primary font-italic me-1">Aktualne potrzeby</span>
+            </p>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                       cellspacing="0"
+                                       role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Position: activate to sort column ascending"
+                                            style="width: 62px;">
+                                            Kategoria
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Position: activate to sort column ascending"
+                                            style="width: 62px;">
+                                            Potrzeba
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${user.needs}" var="need">
+                                    <tr role="row" class="odd">
+                                        <td>${need.category.name}</td>
+                                        <td>${need.name}</td>
+                                        </c:forEach>
+                                    </tr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
-<%@ include file="../extras/footer.jsp" %>
 </html>
