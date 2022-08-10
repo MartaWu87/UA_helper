@@ -31,7 +31,7 @@
 </head>
 <body>
 <div id='map'></div>
-<script src="map.jsp"></script>
+<script src="/theme/js/map.js"></script>
 </body>
 <%@ include file="../extras/footer.jsp" %>
 </html>

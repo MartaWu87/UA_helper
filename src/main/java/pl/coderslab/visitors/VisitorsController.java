@@ -87,7 +87,12 @@ public class VisitorsController {
         return "redirect:/user/show/";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/map")
+    public String map() {
+        return "map/map";
+    }
+
+        @GetMapping("/index")
     public String home() {
         return "extras/index";
     }
